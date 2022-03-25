@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{{username}}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<h3> Hello {{username}}!</h3>
+        <h4>Creation date: {{creation_date}}</h4>
+        {% for post in posts: %}
+            <h4>{{username}} said... </h4>
+            <strong>{{post}}</strong>
+        
+
+        {% endfor%}
+
+	</body>
+</html>

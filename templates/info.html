@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="p:domain_verify" content="5a41f3f12eec69b7b85ee00b28bec1cc"/>
+<title>IoT in Agriculture</title>
+
+<link rel='stylesheet' id='style-redesign-css' href='https://s3.easternpeak.com/wp-content/themes/eps/css/redesign/style.css?ver=20210718' type='text/css' media='all'/>
+<link rel="amphtml" href="https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/?amp"> <style type="text/css">@-webkit-keyframes ep-preloader-peak{60%{border-color:transparent transparent #a4e1c1}to{border-color:transparent transparent #a4e1c1;-webkit-transform:scale(1.6);transform:scale(1.6)}}@keyframes ep-preloader-peak{60%{border-color:transparent transparent #a4e1c1}to{border-color:transparent transparent #a4e1c1;-webkit-transform:scale(1.6);transform:scale(1.6)}}@-webkit-keyframes ep-preloader-loaded{0%{opacity:1;visibility:visible}90%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes ep-preloader-loaded{0%{opacity:1;visibility:visible}90%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}.ep-preloader{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:2000000002;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}.ep-preloader.is-loaded{-webkit-animation:ep-preloader-loaded .7s forwards;animation:ep-preloader-loaded .7s forwards}.ep-preloader.is-loaded .ep-preloader__group{-webkit-animation:ep-preloader-loaded .3s forwards;animation:ep-preloader-loaded .3s forwards}.ep-preloader__group{width:80px;height:20px;font-size:0;white-space:nowrap;text-align:center;direction:ltr}.ep-preloader__peak{position:relative;display:inline-block;width:0;height:0;margin-right:15px;border-style:solid;border-width:0 7px 12px;border-color:transparent transparent #1cb564;-webkit-transform:translateZ(0);transform:translateZ(0)}.ep-preloader__peak:last-child{margin-right:0}.ep-preloader__peak::after{content:"";position:absolute;top:9px;left:-7px;display:inline-block;width:0;height:0;border-style:solid;border-width:0 7px 4px;border-color:transparent transparent #fff}.ep-preloader__peak--first{-webkit-animation:ep-preloader-peak .6s linear infinite alternate;animation:ep-preloader-peak .6s linear infinite alternate}.ep-preloader__peak--second{-webkit-animation:ep-preloader-peak .6s .3s linear infinite alternate;animation:ep-preloader-peak .6s .3s linear infinite alternate}.ep-preloader__peak--third{-webkit-animation:ep-preloader-peak .6s .6s linear infinite alternate;animation:ep-preloader-peak .6s .6s linear infinite alternate}.ep-preloader--outside{display:none;width:100px;height:38px;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);z-index:3;text-align:center;background-color:transparent}.ep-preloader--outside .ep-preloader__group{box-sizing:content-box;padding:10px 10px 7px}.ep-preloader--bg{background-color:#fff;width:100px;height:45px;border-radius:10px}.ep-preloader--bg .ep-preloader__group{width:100px;height:20px;margin-top:16px;padding:0}.ajax-send .ep-preloader--outside,.ajax-sending .ep-preloader--outside{display:block}.content-holder.request-quote-holder.ajax-send,.content-holder.request-quote-holder.ajax-sending{position:relative}</style> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TZ3RSS');</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<head>
+	<nav class="navtop">
+		<div>
+			<h1>IOT in Agricultural</h1>
+			<a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
+			<a href="{{ url_for('info') }}"><i class="fas fa-sign-out-alt"></i>Info</a>
+			<a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+			<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+		</div>
+	</nav>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ3RSS" height="0" width="0" style="display:flex;visibility:hidden"></iframe></noscript>
+<div id="ep-preloader" class="ep-preloader">
+<div class="ep-preloader__group">
+<div class="ep-preloader__peak ep-preloader__peak--first"></div>
+<div class="ep-preloader__peak ep-preloader__peak--second"></div>
+<div class="ep-preloader__peak ep-preloader__peak--third"></div>
+</div>
+</div>
+<main class="dt-main">
+<header class="head">
+
+</header>
+
+<!-- <a href="/" class="head__logo is-dark" data-wpel-link="internal"></a> -->
+<section class="dt-main-banner dt-main-banner--post dt-main-banner--mh">
+<div class="container">
+<div class="dt-main-banner__content">
+<h1>IoT in Agriculture: 8 Technology Use Cases for Smart Farming (and Challenges to Consider)</h1>
+</div>
+</div>
+<div class="dt-main-banner__bg is-exist" style="background-image: linear-gradient(90deg, rgba(0, 34, 54,1) 25%, rgba(0, 34, 54,0.995) 28%, rgba(0, 34, 54,0.9) 40%, rgba(0, 34, 54,0) 90%), url(https://s4.easternpeak.com/wp-content/uploads/2020/08/1920х826_924_1-1-1.jpg);"></div>
+</section>
+<section class="b-wide">
+<div class="container">
+<div class="post">
+<div class="post__content">
+<div class="post__meta">
+</div>
+
+<div class="post__text">
+
+<p style="text-align: right;"><em>The article was updated on March 17, 2022.</em></p>
+<p><span style="font-weight: 400;">With the growing adoption of the Internet of Things (IoT), connected devices have penetrated </span><a href="https://easternpeak.com/blog/6-cool-examples-of-internet-of-things-applications-and-how-to-develop-one/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal"><span style="font-weight: 400;">every aspect of our life</span></a><span style="font-weight: 400;">, from health and fitness, home automation, </span><a href="https://easternpeak.com/blog/connected-cars-top-5-iot-automotive-apps-and-how-to-develop-one/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal"><span style="font-weight: 400;">automotive</span></a><span style="font-weight: 400;"> and logistics, to smart cities and industrial IoT.</span></p>
+<p><span style="font-weight: 400;">Thus, it is only logical that IoT, connected devices, and automation would find its application in agriculture, and as such, tremendously improve nearly every facet of it. How could one still rely on horses and plows when self-driving cars and virtual reality are no longer a sci-fi fantasy but an everyday occurrence? </span></p>
+<p><span style="font-weight: 400;">Farming has seen a number of technological transformations in the last decades, becoming more industrialized and technology-driven. By using various smart agriculture gadgets, farmers have gained better control over the process of raising livestock and growing crops, making it more predictable and improving its efficiency. </span></p>
+<p><span style="font-weight: 400;">This, along with the growing consumer demand for agriculture products, has contributed to the increased proliferation of smart farming technologies worldwide. In 2020, the market share for IoT in agriculture reached $5.6 billion.</span></p>
+<p><strong>In this article, we will explore the IoT use cases in agriculture and examine their benefits. So, if you are considering investing into smart farming, or are planning to build an IoT solution for agriculture, dive right in. </strong></p>
+<h2 id="what-is-smart-agriculture-the-definition-and-market-size"><strong>What is smart agriculture? The definition and market size</strong><a class="anchorlink" href="#what-is-smart-agriculture-the-definition-and-market-size"></a></h2>
+<p><span style="font-weight: 400;">There are many ways to refer to modern agriculture. For example, AgriTech refers to the application of technology in agriculture in general. </span></p>
+<p><span style="font-weight: 400;"><strong>Smart agriculture</strong>, on the other hand, is mostly used to denote the application of IoT solutions in agriculture. So what is smart agriculture using IoT? By using IoT sensors to collect environmental and machine metrics, farmers can make informed decisions, and improve just about every aspect of their work &ndash; from livestock to crop farming. </span></p>
+<p><span style="font-weight: 400;">For example, by using smart agriculture sensors to monitor the state of crops, farmers can define exactly how many pesticides and fertilizers they have to use to reach optimal efficiency. </span><span style="font-weight: 400;">The same applies to the smart farming definition.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s6.easternpeak.com/wp-content/uploads/2018/06/paprika-2345580_960_720-1.jpg" alt="smart-agriculture" data-pagespeed-url-hash="948336982" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<p><span style="font-weight: 400;">Although smart agriculture IoT, as well as industrial IoT in general, aren&rsquo;t as popular as consumer connected devices; yet the market is still very dynamic. The adoption of IoT solutions for agriculture is constantly growing. Namely, COVID-19 has had a positive impact on IoT in the agriculture market share. Disruptions in the supply chain, and the shortage of qualified workers, has propelled its CAGR to 9,9%. In fact, <a href="https://www.marketsandmarkets.com/Market-Reports/covid-19-impact-on-digital-agriculture-market-222616344.html" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external">as per recent reports</a>, the smart framing market share is set to reach $6.2 billion by 2021.</span></p>
+<p><span style="font-weight: 400;">At the same time, the global smart agriculture market size is </span><a href="https://globenewswire.com/news-release/2018/03/22/1444017/0/en/Global-Smart-Agriculture-Market-Will-Reach-USD-15-344-million-by-2025-Zion-Market-Research.html" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">expected</span></a><span style="font-weight: 400;"> to triple by 2025, reaching $15.3 billion (compared to being slightly over $5 billion back in 2016).</span></p>
+<p><span style="font-weight: 400;">Because the market is still developing, there is still ample opportunity for businesses willing to join in. Building IoT products for agriculture within the coming years can set you apart as an early adopter, and as such, help you pave the way to success.</span></p>
+<p><span style="font-weight: 400;">But why should you consider building an IoT application for agriculture in the first place?</span></p>
+<h2 id="the-benefits-of-smart-farming-hows-iot-shaping-agriculture"><strong>The Benefits of smart farming: How&rsquo;s IoT shaping agriculture</strong><a class="anchorlink" href="#the-benefits-of-smart-farming-hows-iot-shaping-agriculture"></a></h2>
+<p><span style="font-weight: 400;">Technologies and IoT have the potential to transform agriculture in many aspects. Namely, there are </span><b>5 ways IoT can improve agriculture</b><span style="font-weight: 400;">:</span></p>
+<ul>
+<li style="font-weight: 400;"><b>Data, tons of data, collected by smart agriculture sensors,</b><span style="font-weight: 400;"> e.g. weather conditions, soil quality, crop&rsquo;s growth progress or cattle&rsquo;s health. This data can be used to track the state of your business in general as well as staff performance, equipment efficiency, etc.</span></li>
+</ul>
+<ul>
+<li style="font-weight: 400;"><b>Better control over the internal processes and, as a result, lower production risks</b><span style="font-weight: 400;">. The ability to foresee the output of your production allows you to plan for better product distribution. If you know exactly how much crops you are going to harvest, you can make sure your product won&rsquo;t lie around unsold.</span></li>
+</ul>
+<p style="text-align: center;"><img class="align center size-full" src="https://s7.easternpeak.com/wp-content/uploads/2018/06/pexels-photo-175389-1.jpeg" alt="benefits-of-smart-farming" data-pagespeed-url-hash="2553566196" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<ul>
+<li style="font-weight: 400;"><b>Cost management and waste reduction thanks to the increased control over the production</b><span style="font-weight: 400;">. Being able to see any anomalies in the crop growth or livestock health, you will be able to mitigate the risks of losing your yield.</span></li>
+</ul>
+<ul>
+<li style="font-weight: 400;"><b>Increased business efficiency through process automation</b><span style="font-weight: 400;">. By using smart devices, you can automate multiple processes across your production cycle, e.g. irrigation, fertilizing, or pest control.</span></li>
+</ul>
+<ul>
+<li style="font-weight: 400;"><b>Enhanced product quality and volumes</b><span style="font-weight: 400;">. Achieve better control over the production process and maintain higher standards of crop quality and growth capacity through automation.</span></li>
+</ul>
+<p><span style="font-weight: 400;">As a result, all of these factors can eventually lead to </span><b>higher revenue</b><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">Now that we have outlined how IoT can be advantageously applied in the sphere of agriculture, let&rsquo;s take a look at how the listed benefits can find their application in real life.</span></p>
+<h2 id="iot-use-cases-in-agriculture-with-examples"><strong>IoT use cases in agriculture (with examples)</strong><a class="anchorlink" href="#iot-use-cases-in-agriculture-with-examples"></a></h2>
+<p>There are many types of IoT sensors for agriculture as well as IoT applications in agriculture in general:</p>
+<h3><b>1.Monitoring of climate conditions </b></h3>
+<p><span style="font-weight: 400;">Probably the most popular smart agriculture gadgets are weather stations, combining various smart farming sensors. Located across the field, they collect various data from the environment and send it to the cloud. The provided measurements can be used to map the climate conditions, choose the appropriate crops, and take the required measures to improve their capacity (i.e. precision farming).</span></p>
+<p><span style="font-weight: 400;">Some examples of such agriculture IoT devices are </span><a href="https://www.allmeteo.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">allMETEO</span></a><span style="font-weight: 400;">, </span><a href="https://smartelements.io/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Smart Elements</span></a><span style="font-weight: 400;">, and </span><a href="https://www.pycno.co/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Pycno</span></a><span style="font-weight: 400;">. </span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s9.easternpeak.com/wp-content/uploads/2018/06/1111.jpg" alt="agriculture-iot-device" data-pagespeed-url-hash="2059242047" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h3><b>2. Greenhouse automation</b></h3>
+<p>Typically, farmers use manual intervention to control the greenhouse environment. The use of IoT sensors enables them to get accurate real-time information on greenhouse conditions such as lighting, temperature, soil condition, and humidity.</p>
+<p><span style="font-weight: 400;">In addition to sourcing environmental data, weather stations can automatically adjust the conditions to match the given parameters. Specifically, greenhouse automation systems use a similar principle.</span></p>
+<p><span style="font-weight: 400;">For instance, </span><a href="https://farmappweb.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Farmapp</span></a><span style="font-weight: 400;"> and </span><a href="http://growlink.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Growlink</span></a><span style="font-weight: 400;"> are also IoT agriculture products offering such capabilities among others.</span></p>
+<p><a href="https://easternpeak.com/works/iot/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal"><span style="font-weight: 400;">GreenIQ</span></a><span style="font-weight: 400;"> is also an interesting product that uses smart agriculture sensors. It is a smart sprinklers controller that allows you to manage your irrigation and lighting systems remotely.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s3.easternpeak.com/wp-content/uploads/2018/06/GreenIQ-Ltd.-e1528368666599.jpg" alt="GreenIQ" data-pagespeed-url-hash="861081061" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h3><b>3. Crop management</b></h3>
+<p><span style="font-weight: 400;">One more type of IoT product in agriculture and another element of precision farming are crop management devices. Just like weather stations, they should be placed in the field to collect data specific to crop farming; from temperature and precipitation to leaf water potential and overall crop health.</span></p>
+<p><span style="font-weight: 400;">Thus, you can monitor your crop growth and any anomalies to effectively prevent any diseases or infestations that can harm your yield. </span><a href="https://arable.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Arable</span></a><span style="font-weight: 400;"> and </span><a href="http://semios.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Semios</span></a><span style="font-weight: 400;"> can serve as good representations of how this use case can be applied in real life.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s7.easternpeak.com/wp-content/uploads/2018/06/MarkTough-1024x683.jpg" alt="arable-device-for-crop-management" data-pagespeed-url-hash="3028368842" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h3><b>4. Cattle monitoring and management</b></h3>
+<p><span style="font-weight: 400;">Just like crop monitoring, there are IoT agriculture sensors that can be attached to the animals on a farm to monitor their health and log performance. Livestock tracking and monitoring help collect data on stock health, well-being, and physical location. </span></p>
+<p><span style="font-weight: 400;">For example, such sensors can identify sick animals so that farmers can separate them from the herd and avoid contamination. Using drones for real-time cattle tracking also helps farmers reduce staffing expenses. This works similarly to </span><a href="https://easternpeak.com/blog/how-to-develop-an-internet-of-things-application-for-pet-care-a-go-to-market-guide/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal"><span style="font-weight: 400;">IoT devices for petcare</span></a><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">For example, </span><a href="http://www.scrdairy.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">SCR by Allflex</span></a><span style="font-weight: 400;"> and </span><a href="https://cowlar.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Cowlar</span></a><span style="font-weight: 400;"> use smart agriculture sensors (collar tags) to deliver temperature, health, activity, and nutrition insights on each individual cow as well as collective information about the herd.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s1.easternpeak.com/wp-content/uploads/2018/06/shutterstock_141066472-1-1.jpg" alt="cattle-monitoring-and-management" data-pagespeed-url-hash="2409376070" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h3><b>5. Precision farming</b></h3>
+<p>Also known as precision agriculture, precision farming is all about efficiency and making accurate data-driven decisions. It&rsquo;s also one of the most widespread and effective applications of IoT in agriculture.</p>
+<p>By using IoT sensors, farmers can collect a vast array of metrics on every facet of the field microclimate and ecosystem: lighting, temperature, soil condition, humidity, CO2 levels, and pest infections. This data enables farmers to estimate optimal amounts of water, fertilizers, and pesticides that their crops need, reduce expenses, and raise better and healthier crops.</p>
+<p><span style="font-weight: 400;">For example, </span><a href="https://www.cropx.com" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><b>CropX</b></a><span style="font-weight: 400;"> builds IoT soil sensors that measure soil moisture, temperature, and electric conductivity enabling farmers to approach each crop&rsquo;s unique needs individually. Combined with geospatial data, this technology helps create precise soil maps for each field. </span><a href="https://www.mothive.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><b>Mothive</b></a><span style="font-weight: 400;"> offers similar services, helping farmers reduce waste, improve yields, and increase farm sustainability.</span></p>
+<h3><b>6. Agricultural drones</b></h3>
+<p><span style="font-weight: 400;">Perhaps one of the most promising agritech advancements is the use of agricultural drones in smart farming. Also known as UAVs (unmanned aerial vehicles), drones are better equipped than airplanes and satellites to collect agricultural data. Apart from surveillance capabilities, drones can also perform a vast number of tasks that previously required human labor: planting crops, fighting pests and infections, agriculture spraying, crop monitoring, etc.</span></p>
+<blockquote><p><strong><em>Read more: <a href="https://easternpeak.com/blog/why-use-agriculture-drones-main-benefits-and-best-practices/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">Why Use Agriculture Drones? Main Benefits and Best Practices</a></em></strong></p></blockquote>
+<p>&nbsp;</p>
+<p><a href="https://www.droneseed.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><b>DroneSeed</b></a><span style="font-weight: 400;">, for example, builds drones for planting trees in deforested areas. The use of such drones is 6 times more effective than human labor. A </span><a href="https://www.sensefly.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><b>Sense Fly</b></a><span style="font-weight: 400;"> agriculture drone eBee SQ uses multispectral image analyses to estimate the health of crops and comes at an affordable price.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s2.easternpeak.com/wp-content/uploads/2020/06/photo-1519482859092-6e854b0f2c5d-1.jpeg" alt="agricultural-drones" data-pagespeed-url-hash="3201561549" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h3><strong>7.</strong> <b>Predictive analytics for smart farming</b></h3>
+<p>Precision agriculture and predictive data analytics go hand in hand. While IoT and smart sensor technology are a goldmine for highly relevant real-time data, the use of data analytics helps farmers make sense of it and come up with important predictions: crop harvesting time, the risks of diseases and infestations, yield volume, etc. Data analytics tools help make farming, which is inherently highly dependent on weather conditions, more manageable, and predictable.</p>
+<p><span style="font-weight: 400;">For example, the </span><a href="https://crop-performance.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><b>Crop Performance</b></a><span style="font-weight: 400;"> platform helps farmers access the volume and quality of yields in advance, as well as their vulnerability to unfavorable weather conditions, such as floods and drought. It also enables farmers to optimize the supply of water and nutrients for each crop and even select yield traits to improve quality.</span></p>
+<p><span style="font-weight: 400;">Applied in agriculture, solutions like </span><a href="https://soilscout.com/applications/agriculture/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><b>SoilScout</b></a><span style="font-weight: 400;"> enable farmers to save up to 50% irrigation water, reduce the loss of fertilizers caused by overwatering, and deliver actionable insights regardless of season or weather conditions.</span></p>
+<h3><b>8. End-to-end farm management systems</b></h3>
+<p><span style="font-weight: 400;">A more complex approach to IoT products in agriculture can be represented by the so-called farm productivity management systems. They usually include a number of agriculture IoT devices and sensors, installed on the premises as well as a powerful dashboard with analytical capabilities and in-built accounting/reporting features. </span></p>
+<p><span style="font-weight: 400;">This offers remote farm monitoring capabilities and allows you to streamline most of the business operations. Similar solutions are represented by </span><a href="https://farmlogs.com/" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">FarmLogs</span></a><span style="font-weight: 400;"> and </span><a href="https://about.cropio.com/#agro" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">Cropio</span></a><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">In addition to the listed IoT agriculture use cases, some prominent opportunities include vehicle tracking (or even automation), storage management, logistics, etc.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s4.easternpeak.com/wp-content/uploads/2018/06/agro_mac_new4-1030x572.png" alt="cropio-farm-management-system" data-pagespeed-url-hash="680193124" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h2 id="things-to-consider-before-developing-your-smart-farming-solution"><strong>Things to consider before developing your smart farming solution </strong><a class="anchorlink" href="#things-to-consider-before-developing-your-smart-farming-solution"></a></h2>
+<p><span style="font-weight: 400;">As we can see, the use cases for IoT in agriculture are endless. There are many ways smart devices can help you increase your farm&rsquo;s performance and revenue. However, agriculture IoT apps development is no easy task. <strong>There are certain challenges you need to be aware of if you are considering investing into smart farming.</strong></span></p>
+<h3><b>1. The hardware</b></h3>
+<p><span style="font-weight: 400;">To build an IoT solution for agriculture, you need to choose the sensors for your device (or create a custom one). Your choice will depend on the types of information you want to collect and the purpose of your solution in general. In any case, the quality of your sensors is crucial to the success of your product: it will depend on the accuracy of the collected data and its reliability.</span></p>
+<h3><b>2. The brain</b></h3>
+<p><span style="font-weight: 400;">Data analytics should be at the core of every smart agriculture solution. The collected data itself will be of little help if you cannot make sense of it. Thus, you need to have powerful data analytics capabilities and apply predictive algorithms and machine learning in order to obtain actionable insights based on the collected data.</span></p>
+<h3><b>3. The maintenance</b></h3>
+<p><span style="font-weight: 400;">Maintenance of your hardware is a challenge that is of primary importance for IoT products in agriculture, as the sensors are typically used in the field and can be easily damaged. Thus, you need to make sure your hardware is durable and easy to maintain. Otherwise you will need to replace your sensors more often than you would like. </span></p>
+<h3><b>4. The mobility</b></h3>
+<p><span style="font-weight: 400;">Smart farming applications should be tailored for use in the field. A business owner or farm manager should be able to access the information on site or remotely via a smartphone or desktop computer.</span></p>
+<p><span style="font-weight: 400;">Plus, each connected device should be autonomous and have enough wireless range to communicate with the other devices and send data to the central server.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s5.easternpeak.com/wp-content/uploads/2018/06/shutterstock_1096552103-1.jpg" alt="smart-farming-app-development" data-pagespeed-url-hash="1785083429" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h3><b>5. The infrastructure</b></h3>
+<p><span style="font-weight: 400;">To ensure that your smart farming application performs well (and to make sure it can handle the data load), you need a solid internal infrastructure. </span></p>
+<p><span style="font-weight: 400;">Furthermore, your internal systems have to be secure. Failing to properly secure your system only increases the likeliness of someone breaking into it, stealing your data or even taking control of your autonomous tractors.</span></p>
+<h3><strong>6.</strong> <b>Connectivity</b></h3>
+<p><span style="font-weight: 400;">The need to transmit data between many agricultural facilities still poses a challenge for the adoption of smart farming. Needless to say, the connection between these facilities should be reliable enough to withstand bad weather conditions and to ensure non-disruptive operations. Today, IoT devices still use varying connection protocols, although the efforts to develop unified standards in this area are currently underway. The advent of 5G and technologies like space-based Internet will, hopefully, help find a solution to this problem.</span></p>
+<h3><strong>7.</strong> <b>Data collection frequency</b></h3>
+<p><span style="font-weight: 400;">Because of the high variety of data types in the agricultural industry, ensuring the optimal data collection frequency can be problematic. The data from field-based, aerial and environmental sensors, apps, machinery, and equipment, as well as processed analytical data, can be a subject of restriction and regulations. Today, the safe and timely delivery, and sharing of this data is one of the current smart farming challenges.</span></p>
+<h3><strong>8.</strong> <b>Data security in the agriculture industry</b></h3>
+<p><span style="font-weight: 400;">Precision agriculture and IoT technology imply working with large sets of data, which increases the number of potential security loopholes that perpetrators can use for data theft and hacking attacks. Unfortunately, data security in agriculture is still, to a large extent, an unfamiliar concept. Many farms, for example, use drones that transmit data to farm machinery. This machinery connects to the Internet but has little to zero security protection, such as user passwords or remote access authentications.</span></p>
+<p><span style="font-weight: 400;">Some of the basic IoT security recommendations include monitoring data traffic, using encryption methods to protect sensitive data, leveraging AI-based security tools to detect traces of suspicious activity in real-time, and storing data in the blockchain to ensure its integrity. To fully benefit from IoT, farmers will have to get familiar with the data security concept, set up internal security policies, and adhere to them.</span></p>
+<p style="text-align: center;"><img class="align center size-full" src="https://s1.easternpeak.com/wp-content/uploads/2020/06/photo-1586771107445-d3ca888129ff-1.jpeg" alt="agriculture-solutions" data-pagespeed-url-hash="749803591" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<h2 id="grow-your-agriculture-business-with-smart-iot-solutions-from-eastern-peak"><strong>Grow your agriculture business with smart IoT solutions </strong><a class="anchorlink" href="#grow-your-agriculture-business-with-smart-iot-solutions-from-eastern-peak"></a></h2>
+<p><span style="font-weight: 400;">According to </span><a href="http://www.fao.org/fileadmin/templates/wsfs/docs/expert_paper/How_to_Feed_the_World_in_2050.pdf" target="_blank" rel="noopener noreferrer nofollow" data-wpel-link="external"><span style="font-weight: 400;">the UN Food and Agriculture Organization (FAO)</span></a><span style="font-weight: 400;">, the global population is expected to surpass 9 billion people by 2050. To produce enough food for the given population, agriculture production volumes have to increase by 50%. </span></p>
+<p><span style="font-weight: 400;">As the resources for agricultural operations are limited (most of the lands suitable for farming are already in use), the only way to increase volume is to improve production efficiency. There is no doubt as to the extent with which smart farming can help tackle this challenge; in fact, it seems that it is not possible without it. Here at Eastern Peak we develop custom IoT solutions for agriculture, tailored to your particular needs.</span></p>
+<p><span style="font-weight: 400;"><section id="ep-form" class="ep-form ep-form--custom">
+</section>
+</span></p>
+
+
+
+<h3><strong>How to get started?</strong></h3>
+<p><span style="font-weight: 400;">From cattle tracking to advanced field mapping, IoT applications in smart agriculture vary from farm to farm depending on your market segment, climate, and region. In many instances, out-of-the-box tools won&rsquo;t be relevant, and you may need a tailored smart farming IoT solution. At Eastern Peak we approach each customer individually to meet their unique needs.</span></p>
+<p>The product discovery phase is the best first step you can take to lay a solid foundation for the development of your app. It includes a functional specification, UX/UI design, and a visual prototype that will give you a clear vision of the end product. On average, this phase takes 4-6 weeks.</p>
+<p><strong>The product discovery phase can help you:</strong></p>
+<ul>
+<li>define a full scope of work and develop a roadmap for the project</li>
+<li>set a realistic budget for your MVP and plan your resources</li>
+<li>test the waters with your audience using a visual prototype</li>
+<li>craft a convincing investment pitch</li>
+<li>get to know your team</li>
+</ul>
+<p><em>We at Eastern Peak have already helped many startups and Fortune 500 companies digitize and streamline their operations with the help of technologies. We provide end-to-end services building IoT solutions across a number of business domains, from hardware design to software development, testing, and integration.</em></p>
+<p><strong><em>To receive professional consultation from our experts, get in touch with us&nbsp;using our <a href="https://easternpeak.com/contacts/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">contact form</a>.</em></strong></p>
+<p><strong>Read also:</strong></p>
+<ul>
+<li><a href="https://easternpeak.com/blog/smart-farming-how-automation-is-transforming-agriculture/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">Smart Farming: How Automation Is Transforming Agriculture</a></li>
+<li><a href="https://easternpeak.com/blog/3-edge-computing-use-cases-for-smart-farming/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">3 Edge Computing Use Cases for Smart Farming</a></li>
+<li><a href="https://easternpeak.com/blog/smart-agriculture-monitoring-solutions-to-optimize-farming-productivity/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">Smart Agriculture Monitoring Solutions to Optimize Farming Productivity</a></li>
+<li><a href="https://easternpeak.com/blog/6-cool-examples-of-internet-of-things-applications-and-how-to-develop-one/" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">6 Cool Examples of Internet of Things Applications and How to Develop One</a></li>
+</ul>
+</div>
+<div class="post__author">
+<div class="ceo-card-wrap">
+<h5>About the author:</h5>
+<div class="ceo-card">
+<figure><img alt='' src='https://secure.gravatar.com/avatar/690a58c40e78af15866a0278a65ef9d8?s=140&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/690a58c40e78af15866a0278a65ef9d8?s=280&#038;d=mm&#038;r=g 2x' class='avatar avatar-140 photo' height='140' width='140' loading='lazy' data-pagespeed-url-hash="2924971704" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"/></figure>
+<div class="ceo-content">
+<p>Alexey Chalimov, CEO at Eastern Peak</p>
+<p class="small-p">As CEO at Eastern Peak, a professional software consulting and development company, Alexey ensures top quality and cost-effective services to clients from all over the world.
+Alexey is also a founder and technology evangelist at several technology companies. Previously, as a CEO of the Gett (GetTaxi) technology company, Alexey was in charge of developing the revolutionary Gett service from ground up and deploying the operation across the globe from London to Moscow and Tel Aviv.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="post__info">
+<div class="post__info-tags">
+<div class="post__info-title">Tags</div>
+<div class="post__info-content">
+<div class="tags tags--post">
+<a href="https://easternpeak.com/tag/internet-of-things/" title="Internet of Things" class="tags__item" data-wpel-link="internal">Internet of Things</a>
+<a href="https://easternpeak.com/tag/iot/" title="IoT" class="tags__item" data-wpel-link="internal">IoT</a>
+<a href="https://easternpeak.com/tag/iot-application/" title="IoT application" class="tags__item" data-wpel-link="internal">IoT application</a>
+<a href="https://easternpeak.com/tag/iot-in-agriculture/" title="IoT in agriculture" class="tags__item" data-wpel-link="internal">IoT in agriculture</a>
+<a href="https://easternpeak.com/tag/smart-farming/" title="smart farming" class="tags__item" data-wpel-link="internal">smart farming</a>
+</div>
+</div>
+</div>
+<div class="post__info-link">
+<div class="post__info-title">Link</div>
+<div class="post__info-content">
+<a href="https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/" data-wpel-link="internal">https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/</a>
+</div>
+</div>
+</div>
+</div>
+<div class="post__sidebar">
+<div class="sidebar">
+<div class="sidebar__contents">
+<h4 class="sidebar__title sidebar__title--upper">Contents</h4>
+<ul class="sidebar__items">
+<li class="sidebar__item">
+<a href="#what-is-smart-agriculture-the-definition-and-market-size" class="sidebar__link">What is smart agriculture? The definition and market size</a>
+</li>
+<li class="sidebar__item">
+<a href="#the-benefits-of-smart-farming-hows-iot-shaping-agriculture" class="sidebar__link">The Benefits of smart farming: How’s IoT shaping agriculture</a>
+</li>
+<li class="sidebar__item">
+<a href="#iot-use-cases-in-agriculture-with-examples" class="sidebar__link">IoT use cases in agriculture (with examples)</a>
+</li>
+<li class="sidebar__item">
+<a href="#things-to-consider-before-developing-your-smart-farming-solution" class="sidebar__link">Things to consider before developing your smart farming solution </a>
+</li>
+<li class="sidebar__item">
+<a href="#grow-your-agriculture-business-with-smart-iot-solutions-from-eastern-peak" class="sidebar__link">Grow your agriculture business with smart IoT solutions from Eastern Peak</a>
+</li>
+</ul>
+</div>
+<div class="sharing post__sharing post__sharing--pdg post__sharing clear-mgn-top">
+<div class="sharing__title">Sharing is caring!</div>
+<div class="sharing__items">
+<div class="sharing__item sharing__item--tw">
+<a href="https://twitter.com/share" data-dnt="true" data-wpel-link="external" class="twitter-share-button" rel="nofollow noopener"></a>
+</div>
+<div class="sharing__item sharing__item--fb">
+<a class="fb-xfbml-parse-ignore" target="popup" onclick="window.open(&#039;https://www.facebook.com/sharer/sharer.php?u=https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/&amp;src=sdkpreparse&#039;,&#039;popup&#039;,&#039;width=600,height=500&#039;); return false; " href="https://www.facebook.com/sharer/sharer.php?u=https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/&amp;src=sdkpreparse" data-wpel-link="external" rel="nofollow noopener"></a>
+</div>
+<button class="sharing__item sharing__item--in">
+<script type="IN/Share"></script>
+</button>
+<a class="sharing__item sharing__item--rd" href="https://www.reddit.com/submit?url=https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/" target="_blank" data-wpel-link="external" rel="nofollow noopener"></a>
+</div>
+</div>
+</div>
+<div class="subscribe subscribe--bottom">
+<div class="ep-preloader ep-preloader--outside ep-preloader--bg">
+<div class="ep-preloader__group">
+<div class="ep-preloader__peak ep-preloader__peak--first"></div>
+<div class="ep-preloader__peak ep-preloader__peak--second"></div>
+<div class="ep-preloader__peak ep-preloader__peak--third"></div>
+</div>
+</div>	<form class="fb fb--v subscribe__container js-subscribe-form" method="post">
+<h4 class="subscribe__title"><span>Enjoyed </span> the read?</h4>
+<div class="subscribe__description">
+<p>Don't miss our next article!</p>
+</div>
+<div class="fb__fields">
+<div class="fb__field">
+<input id="subscribe-fullname" type="text" value="" class="fb__input" name="fname" tabindex="1" required>
+<label for="subscribe-fullname" class="fb__label">Full name *</label>
+</div>
+<div class="fb__field">
+<input id="subscribe-email" type="email" value="" class="fb__input" name="email" tabindex="2" required>
+<label for="subscribe-email" class="fb__label">Email *</label>
+</div>
+</div>
+<div class="fb__submit">
+<input type="hidden" name="action" value="mailchimpsubscribe" tabindex="-1">
+<button type="submit" class="btn btn--wide" tabindex="3">Subscribe</button>
+</div>
+</form>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<div class="popup__img"></div>
+<h4 class="popup__title js-popup-mailbox-title"></h4>
+<div class="popup__description"><p class="js-popup-mailbox-description"></p></div>
+
+<div id="fb-root"></div>
+<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));</script>
+<script async defer src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+	lang: en_US
+</script>
+
+<script src="https://s5.easternpeak.com/wp-content/themes/eps/js/redesign/vendors.js?v=20210718"></script>
+<script async defer src="https://s3.easternpeak.com/wp-content/themes/eps/js/redesign/main.js?v=20210718"></script>
+<script async defer src="https://www.google.com/recaptcha/api.js?render=6LfLKIAUAAAAALPDFgg2TdQ3yEk58bfFgzO14NwK"></script>
+
+</body>
+</html>
