@@ -1,18 +1,22 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
 import re
-from pymongo import MongoClient
 import datetime,json
 from db import insertNewRecord
 app = Flask(__name__)
-import bcrypt
 
 # Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'your secret key'
-app.config['MONGO_DBNAME'] = 'test'
-app.config['MONGO_URI'] = 'mongodb+srv://bhavesh:bhau2021@cluster0.1mj5o.mongodb.net/test'
-mongo = MongoClient(app.config.get('MONGO_URI'))
-db =  mongo['test']
-collName = db['users']
+
+# Enter your database connection details below
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'bhavesh@tcet'
+app.config['MYSQL_DB'] = 'login'
+
+# Intialize MySQL   
+mysql = MySQL(app)
 
 @app.route('/device_dashboard')
 def device_dashboard():
@@ -42,19 +46,19 @@ def login():
         username = request.form['username']
         password = request.form['password']
         # Check if account exists using MySQL
-        
-        account = collName.find_one({'name' : username})
-        
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
         # Fetch one record and return result
+        account = cursor.fetchone()
         # If account exists in accounts table in out database
-        if account and bcrypt.hashpw(password.encode('utf-8'), account['password']) == account['password']:
+        if account:
             # Create session data, we can access this data in other routes
             session['loggedin'] = True
-            # session['id'] = account['_id']
-            session['username'] = account['name']
+            session['id'] = account['id']
+            session['username'] = account['username']
             # Redirect to home page
             #return 'Logged in successfully!'
-            return redirect(url_for('user_render'))
+            return redirect(url_for('home'))
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
@@ -85,11 +89,12 @@ def register():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
-        hashpass = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        
         
          # Check if account exists using MySQL
-        account = collName.find_one({'name' : username,'email' : email})
-        
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM accounts WHERE username = %s', (username,))
+        account = cursor.fetchone()
         # If account exists show error and validation checks
         if account:
             msg = 'Account already exists!'
@@ -101,7 +106,8 @@ def register():
             msg = 'Please fill out the form!'
         else:
             # Account doesnt exists and the form data is valid, now insert new account into accounts table
-            collName.insert_one({'name' : username ,'password' : hashpass,'email':email})
+            cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, password, email,))
+            mysql.connection.commit()
             msg = 'You have successfully registered!'
     elif request.method == 'POST':
         # Form is empty... (no POST data)
@@ -121,8 +127,8 @@ def profile():
     # Check if user is loggedin
     if 'loggedin' in session:
         # We need all the account info for the user so we can display it on the profile page
-        # cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        # cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
         account = cursor.fetchone()
         # Show the profile page with account info
         return render_template('profile.html', account=account)
