@@ -15,13 +15,17 @@
 <link rel="amphtml" href="https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/?amp"> <style type="text/css">@-webkit-keyframes ep-preloader-peak{60%{border-color:transparent transparent #a4e1c1}to{border-color:transparent transparent #a4e1c1;-webkit-transform:scale(1.6);transform:scale(1.6)}}@keyframes ep-preloader-peak{60%{border-color:transparent transparent #a4e1c1}to{border-color:transparent transparent #a4e1c1;-webkit-transform:scale(1.6);transform:scale(1.6)}}@-webkit-keyframes ep-preloader-loaded{0%{opacity:1;visibility:visible}90%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes ep-preloader-loaded{0%{opacity:1;visibility:visible}90%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}.ep-preloader{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background-color:#fff;z-index:2000000002;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}.ep-preloader.is-loaded{-webkit-animation:ep-preloader-loaded .7s forwards;animation:ep-preloader-loaded .7s forwards}.ep-preloader.is-loaded .ep-preloader__group{-webkit-animation:ep-preloader-loaded .3s forwards;animation:ep-preloader-loaded .3s forwards}.ep-preloader__group{width:80px;height:20px;font-size:0;white-space:nowrap;text-align:center;direction:ltr}.ep-preloader__peak{position:relative;display:inline-block;width:0;height:0;margin-right:15px;border-style:solid;border-width:0 7px 12px;border-color:transparent transparent #1cb564;-webkit-transform:translateZ(0);transform:translateZ(0)}.ep-preloader__peak:last-child{margin-right:0}.ep-preloader__peak::after{content:"";position:absolute;top:9px;left:-7px;display:inline-block;width:0;height:0;border-style:solid;border-width:0 7px 4px;border-color:transparent transparent #fff}.ep-preloader__peak--first{-webkit-animation:ep-preloader-peak .6s linear infinite alternate;animation:ep-preloader-peak .6s linear infinite alternate}.ep-preloader__peak--second{-webkit-animation:ep-preloader-peak .6s .3s linear infinite alternate;animation:ep-preloader-peak .6s .3s linear infinite alternate}.ep-preloader__peak--third{-webkit-animation:ep-preloader-peak .6s .6s linear infinite alternate;animation:ep-preloader-peak .6s .6s linear infinite alternate}.ep-preloader--outside{display:none;width:100px;height:38px;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);z-index:3;text-align:center;background-color:transparent}.ep-preloader--outside .ep-preloader__group{box-sizing:content-box;padding:10px 10px 7px}.ep-preloader--bg{background-color:#fff;width:100px;height:45px;border-radius:10px}.ep-preloader--bg .ep-preloader__group{width:100px;height:20px;margin-top:16px;padding:0}.ajax-send .ep-preloader--outside,.ajax-sending .ep-preloader--outside{display:block}.content-holder.request-quote-holder.ajax-send,.content-holder.request-quote-holder.ajax-sending{position:relative}</style> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TZ3RSS');</script>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
 <head>
 	<nav class="navtop">
 		<div>
 			<h1>IOT in Agricultural</h1>
-			<a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
-			<a href="{{ url_for('info') }}"><i class="fas fa-sign-out-alt"></i>Info</a>
-			<a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+			<a href="{{ url_for('login_home') }}"><i class="fas fa-home"></i>Home</a>
+			<a href="{{ url_for('dashboard') }}"><i class="fa fa-dashboard"></i>Dashboard</a>
+		<!--	<a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a> -->
 			<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
 		</div>
 	</nav>
@@ -192,11 +196,17 @@
 <div class="ceo-card">
 <figure><img alt='' src='https://secure.gravatar.com/avatar/690a58c40e78af15866a0278a65ef9d8?s=140&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/690a58c40e78af15866a0278a65ef9d8?s=280&#038;d=mm&#038;r=g 2x' class='avatar avatar-140 photo' height='140' width='140' loading='lazy' data-pagespeed-url-hash="2924971704" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"/></figure>
 <div class="ceo-content">
-<p>Alexey Chalimov, CEO at Eastern Peak</p>
-<p class="small-p">As CEO at Eastern Peak, a professional software consulting and development company, Alexey ensures top quality and cost-effective services to clients from all over the world.
-Alexey is also a founder and technology evangelist at several technology companies. Previously, as a CEO of the Gett (GetTaxi) technology company, Alexey was in charge of developing the revolutionary Gett service from ground up and deploying the operation across the globe from London to Moscow and Tel Aviv.</p>
+<p>Harsh Jain</p>
+<p class="small-p"> I am student of D.J.Sangvi in Electronic and Telecomminication</p>
 </div>
 </div>
+<div class="ceo-card">
+	<figure><img alt='' src='https://secure.gravatar.com/avatar/690a58c40e78af15866a0278a65ef9d8?s=140&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/690a58c40e78af15866a0278a65ef9d8?s=280&#038;d=mm&#038;r=g 2x' class='avatar avatar-140 photo' height='140' width='140' loading='lazy' data-pagespeed-url-hash="2924971704" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"/></figure>
+	<div class="ceo-content">
+	<p>Harsh Jain</p>
+	<p class="small-p">I am student of D.J.Sangvi in Electronic and Telecomminication.</p>
+	</div>
+	</div>
 </div>
 </div>
 <div class="post__info">
@@ -215,7 +225,7 @@ Alexey is also a founder and technology evangelist at several technology compani
 <div class="post__info-link">
 <div class="post__info-title">Link</div>
 <div class="post__info-content">
-<a href="https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/" data-wpel-link="internal">https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/</a>
+<a href="https://easternpeak.com/blog/iot-in-agriculture-technology-use-cases-for-smart-farming-and-challenges-to-consider/" data-wpel-link="internal">https://iot-smart-farming-and-challenges-to-consider/</a>
 </div>
 </div>
 </div>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  {% if title %}
+  <title>{{ title }} - Smart-Farming</title>
+  {% else %}
+  <title>Welcome to Smart-Farming</title>
+  {% endif %}
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta http-equiv="refresh" content="5" > -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js" integrity="sha256-8zyeSXm+yTvzUN1VgAOinFgaVFEFTyYzWShOy9w7WoQ=" crossorigin="anonymous"></script>
+
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Overlay effect when opening sidebar on small screens 
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+-->
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:40px;margin-top:10px;">
+  <nav class="navtop">
+		<div>
+			<h1>IOT in Agricultural</h1>
+			<a href="{{ url_for('login_home') }}"><i class="fas fa-home"></i>Home</a>
+			<a href="{{ url_for('dashboard') }}"><i class="fa fa-dashboard"></i>Dashboard</a>
+		<!--	<a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a> -->
+			<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+		</div>
+	</nav>
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+  </header>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-white w3-hover-shadow w3-border-red w3-bottombar w3-padding-16">
+        <div class="w3-left"><img src="/static/images/temperature.svg"></div>
+        <div class="w3-right">
+          <h3  id = "card-temp">52</h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Temperature</h4>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-white w3-hover-shadow w3-border-blue w3-bottombar w3-padding-16">
+        <div class="w3-left"><img src="/static/images/grass.svg"></div>
+        <div class="w3-right">
+          <h3 id = "card-moisture">99</h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Moisture</h4>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-white w3-hover-shadow w3-border-teal w3-bottombar w3-padding-16">
+        <div class="w3-left"><img src="/static/images/humidity.svg"></div>
+        <div class="w3-right">
+          <h3 id ="card-humidity">23</h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Humidity</h4>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-white w3-hover-shadow w3-border-orange w3-bottombar w3-padding-16">
+        <div class="w3-left"><img src="/static/images/ecology.svg"></div>
+        <div class="w3-right">
+          <h3 id = "card-light">50</h3>
+        </div>
+        <div class="w3-clear"></div>
+        <h4>Light Intensity</h4>
+      </div>
+    </div>
+  </div>
+
+<div class="w3-panel w3-padding-large">
+  <div class="w3-container w3-white w3-card w3-hover-shadow w3-section w3-round-large">
+    <h3>
+      Temperature
+    </h3> 
+    <canvas id="temperature" ></canvas>
+    <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="500" height="280" src="https://charts.mongodb.com/charts-project-1-tufbz/embed/charts?id=623ef8e3-a205-4d03-8b1a-da5132179844&maxDataAge=60&theme=dark&autoRefresh=true"></iframe>
+  </div>
+
+    
+    <div class="w3-container w3-white w3-card w3-hover-shadow w3-section w3-round-large">
+      <h3>
+        Humidity
+      </h3> 
+      <canvas id="humidity" ></canvas>
+      <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="500" height="280" src="https://charts.mongodb.com/charts-project-1-tufbz/embed/charts?id=623feceb-377f-43eb-8560-c364718e7708&maxDataAge=3600&theme=dark&autoRefresh=true"></iframe>
+    </div>
+    
+    <div class="w3-container w3-white w3-card w3-hover-shadow w3-section w3-round-large">
+      <h3>
+        MoistureLevel
+      </h3> 
+      <canvas id="moisture" ></canvas>
+      <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="500" height="280" src="https://charts.mongodb.com/charts-project-1-tufbz/embed/charts?id=623fedd1-0445-4d49-828c-19a45abd0045&maxDataAge=60&theme=dark&autoRefresh=true"></iframe>   
+    </div>
+
+    <div class="w3-container w3-white w3-card w3-hover-shadow w3-section w3-round-large">
+      <h3>
+        Light Intensity
+      </h3> 
+      <canvas id="light" ></canvas>
+      <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="500" height="280" src="https://charts.mongodb.com/charts-project-1-tufbz/embed/charts?id=623feef4-eba3-446a-8cfa-993e95441933&maxDataAge=60&theme=dark&autoRefresh=true"></iframe>
+    </div>
+
+</div>
+
+  <br>
+  <div class="w3-container w3-dark-grey w3-padding-32">
+    <div class="w3-row">
+      <div class="w3-container w3-third">
+        <h5 class="w3-bottombar w3-border-green">Contributers</h5>
+        <h6>Lali</h6>
+        <h6>Harsh Jain</h6>
+        
+      </div>
+      <div class="w3-container w3-third">
+        <h5 class="w3-bottombar w3-border-red">Guides</h5>
+        <h6>All faculties Of D.J.Sangvi</h6>
+      </div>
+      <div class="w3-container w3-third">
+        <h5 class="w3-bottombar w3-border-orange">References</h5>
+        <h6>Google.com</h6>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /*
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar"); */
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+/*
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+*/
+</script>
+
+<script src="/static/JS/chart_data.js"> </script>
+
+</body>
+</html>

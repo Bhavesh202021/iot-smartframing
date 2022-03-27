@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, jsonify, render_template, request, redirect, url_for, session
 import re
 from pymongo import MongoClient
 import datetime,json
@@ -11,25 +11,29 @@ app.secret_key = 'your secret key'
 app.config['MONGO_DBNAME'] = 'test'
 app.config['MONGO_URI'] = 'mongodb+srv://bhavesh:bhau2021@cluster0.1mj5o.mongodb.net/test'
 mongo = MongoClient(app.config.get('MONGO_URI'))
-db =  mongo['test']
+db =  mongo['test'] 
 collName = db['users']
 
-@app.route('/device_dashboard')
-def device_dashboard():
-    return render_template('device_dashboard.html')
-
-@app.route('/login/home/')
-def home():
-    return render_template('home.html')
+@app.route('/login/dashboard/')
+def dashboard():
+    return render_template('overview.html')
 
 @app.route('/')
 def welcome():
     return render_template('register.html')
 
-@app.route('/login/home/info')
-def info():
+@app.route('/login/home')
+def login_home():
     return render_template('info.html')
 
+
+
+@app.route('/data')
+def data():
+    id = request.args.get('id')
+    charts = db['users']
+    result = charts.find_one({'name':id})
+    return jsonify({'results' : result['values']})
 
 # http://localhost:5000/login/ - the following will be our login page, which will use both GET and POST requests
 @app.route('/login/', methods=['GET', 'POST'])
@@ -54,7 +58,7 @@ def login():
             session['username'] = account['name']
             # Redirect to home page
             #return 'Logged in successfully!'
-            return redirect(url_for('user_render'))
+            return redirect(url_for('login_home'))
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
@@ -115,15 +119,19 @@ def register():
 
 
 
-# http://localhost:5000/login/profile - this will be the profile page, only accessible for loggedin users
+#http://localhost:5000/login/profile - this will be the profile page, only accessible for loggedin users
 @app.route('/login/profile')
 def profile():
     # Check if user is loggedin
     if 'loggedin' in session:
         # We need all the account info for the user so we can display it on the profile page
+        mongo = MongoClient(app.config.get('MONGO_URI'))
+        db =  mongo['test']
+        collName = db['users']
         # cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         # cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
-        account = cursor.fetchone()
+        account = collName.find_one({'name' : username})
+        account = collName.fetchone()
         # Show the profile page with account info
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
@@ -161,103 +169,6 @@ def user_post():
     except Exception as e:
         return {'status_code':300 , 'message':f'Generic error:{str(e)}'}
     
-    # try:
-    #     username = request.args.get('username' , '')
-    #     try:
-    #         userfile = open(f'./data/{username}.json','r')
-    #         userjson = json.loads(userfile.read())
-    #         userfile.close()            
-    #         return userjson
-        
-    #     except:
-    #         return {'status_code':301 ,'Message':'User not found!'}
-             
-        
-    # except:
-    #     return {'status_code' :300 ,'Message':'Bad request! send ona username'}
-
-# @app.route("/makepost" ,methods = ['POST'])
-# def makepost():
-#     request.get_json(force =True)
-#     data = request.json
-    
-#     timestamp = datetime.datetime.now()
-#     timestamp = str(timestamp).replace(' ','').replace(':',' ')
-#     print(timestamp)
-    
-    
-#     try:
-#         title = data['title']
-#         body = data['body']
-#         user = data['username']
-#         post = open(f'./data/{user}_{timestamp}.json','w')
-        
-#         obj = {
-#             'timestamp':timestamp,
-#             'username': user,
-#             'title':title,
-#             'body':body
-            
-#         }
-#         post.write(json.dumps(obj))
-#         post.close
-#         return {'status_code':200,'message':'Post created successful'}
-        
-#     except Exception as e:
-#         return {'status_code':300 , 'message':f'Generic error:{str(e)}'}
-#     print(timestamp)    
-    
-#     return {}
-
-        
-
-@app.route("/senseordata" ,methods = ['POST'])
-def sensordata():
-    #Pull out the username from the request
-    
-    """
-    
-    {
-        'username' : 'vikind_dev'
-    }
-    
-    """
-    request.get_json(force=True)
-    data = request.json
-    try:
-        username = data['username']     
-        try:
-            user_file =  open(f'./data/{username}.json','r')
-            json_data = json.loads(user_file.read())
-            user_file.close()
-            
-            return json_data
-        except:
-            return {'status_code':301, 'message':'User not found!'}   
-    except:
-         return {'status_code':300 , 'message':'Malformed request, send on username'}
-        
-    #open the filr with user's information in it
-    
-    #send our response
-
-## FRONTED/RENDER SECTION ##
-@app.route('/login/home/userRender', methods =['GET'])
-def user_render():
-    username = request.args.get('username')
-    try:
-        userfile = open(f'./data/{username}.json', 'r')
-        userjson = json.loads(userfile.read())
-        userfile.close()
-        creation_date = userjson['creation_date']
-        posts = userjson['posts']
-        return render_template('hellouser.html', username = username, creation_date = creation_date, posts = posts)
-    except Exception as e:
-        return render_template('error.html',exception=str(e))
-    
-        
-   
-
 if __name__ == "__main__":
     app.run(debug = True)
 
