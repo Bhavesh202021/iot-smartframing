@@ -18,6 +18,10 @@ collName = db['users']
 def dashboard():
     return render_template('overview.html')
 
+@app.route('/login/dashboard/moisturelevel/')
+def moisturelevel():
+    return render_template('overview.html')
+
 @app.route('/')
 def welcome():
     return render_template('register.html')
