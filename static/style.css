@@ -10,6 +10,20 @@ body {
     margin: 0;
     
 }
+
+#table {
+    display: table;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    padding: 20px;
+}
+
 .login, .register {
     
     width: 400px;
