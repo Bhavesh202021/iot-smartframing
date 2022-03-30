@@ -146,24 +146,31 @@ def profile():
 ##API 
 # @app.route("/user" ,methods = ['GET'])
 # def user_get():
-#     return ("http://127.0.0.1:2000/user")
+#     return ("http://127.0.0.1:2000/user")@app.route("/user" , methods = ['POST'])
 
-@app.route("/user" ,methods = ['POST'])
+@app.route("/user" , methods = ['POST'])
 def user_post():
     data = request.json
+    select = request.form.get('comp_select')
+    select = int(select)
+    print(select,type(select))
     try:
         temperature = data['temperature']
         humidity = data['humidity']
         light = data['light']
-        moistureLevel = data["moistureLevel"]
-        #post = open(f'./data/bhavesh.json','w')
-        
+        if (select is not None):
+            moistureLevel = select  
+            print(moistureLevel)  
+        else:
+        moistureLevel = data['moistureLevel']
+                     
         obj = {
             'temperature': temperature,
             'humidity':humidity,
             'light':light,
-            'moistureLevel':moistureLevel  
+            'moistureLevel':moistureLevel
         }
+        #post = open(f'./data/bhavesh.json','w')
         print(obj)
         #post.write(json.dumps(obj))
         #post.close()
