@@ -1,3 +1,4 @@
+from tkinter.messagebox import NO
 from flask import Flask, jsonify, render_template, request, redirect, url_for, session
 import re
 from pymongo import MongoClient
@@ -14,13 +15,20 @@ mongo = MongoClient(app.config.get('MONGO_URI'))
 db =  mongo['test'] 
 collName = db['users']
 
+
 @app.route('/login/dashboard/')
 def dashboard():
     return render_template('overview.html')
 
-@app.route('/login/dashboard/moisturelevel/')
-def moisturelevel():
+@app.route('/login/dashboard/moisturelevelupdate/')
+def moisturelevelupdate():
+    # sms = ''
+    # if request.method == 'POST' and not 'comp_select' in request.form:
+    #     comp_select = request.form['comp_select']
+    #     if not comp_select :
+    #         sms = 'Please select range of moisture level!'
     return render_template('overview.html')
+    
 
 @app.route('/')
 def welcome():
@@ -30,14 +38,6 @@ def welcome():
 def login_home():
     return render_template('info.html')
 
-
-
-@app.route('/data')
-def data():
-    id = request.args.get('id')
-    charts = db['users']
-    result = charts.find_one({'name':id})
-    return jsonify({'results' : result['values']})
 
 # http://localhost:5000/login/ - the following will be our login page, which will use both GET and POST requests
 @app.route('/login/', methods=['GET', 'POST'])
@@ -146,7 +146,15 @@ def profile():
 ##API 
 # @app.route("/user" ,methods = ['GET'])
 # def user_get():
-#     return ("http://127.0.0.1:2000/user")@app.route("/user" , methods = ['POST'])
+#     return ("http://127.0.0.1:2000/user")
+
+
+# @app.route("/test" , methods=['GET', 'POST'])
+# def test():
+#     select = request.form.get('comp_select')
+#     print(str(select))
+#     return(str(select)) # just to see what select is
+
 
 @app.route("/user" , methods = ['POST'])
 def user_post():
@@ -158,10 +166,10 @@ def user_post():
         temperature = data['temperature']
         humidity = data['humidity']
         light = data['light']
-        if (select is not None):
-            moistureLevel = select  
-            print(moistureLevel)  
-        else:
+        # if (select is not None):
+        #     moistureLevel = select  
+        #     print(moistureLevel)  
+        # else:
         moistureLevel = data['moistureLevel']
                      
         obj = {
