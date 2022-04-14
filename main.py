@@ -18,20 +18,12 @@ collName = db['users']
 
 
 
-@app.route('/login/dashboard/')
+@app.route('/login/dashboard/',methods=['GET', 'POST'])
 def dashboard():
+    print("-----------------")
     return render_template('overview.html')
 
-# @app.route('/login/dashboard/moisturelevelupdate/')
-# def moisturelevelupdate():
-#     # sms = ''
-#     # if request.method == 'POST' and not 'comp_select' in request.form:
-#     #     comp_select = request.form['comp_select']
-#     #     if not comp_select :
-#     #         sms = 'Please select range of moisture level!'
-#     return render_template('overview.html')
     
-
 @app.route('/')
 def welcome():
     return render_template('register.html')
@@ -150,11 +142,11 @@ def profile():
 # def user_get():
 #     return ("http://127.0.0.1:2000/user")
 
-@app.route("/moisturevalue",methods = ['POST'])
-def setmoisture_get():
-    if msValue > 1 :
-        return msValue
-    return -1
+# @app.route("/moisturevalue",methods = ['POST'])
+# def setmoisture_get():
+#     if msValue > 1 :
+#         return msValue
+#     return -1
     
 
 
@@ -209,5 +201,5 @@ def user_post():
         return {'status_code':300 , 'message':f'Generic error:{str(e)}'}
     
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = True,port=2000)
 
