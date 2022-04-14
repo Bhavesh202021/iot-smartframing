@@ -129,19 +129,27 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="form-group">
           <div class="input-group">
             <div style = "width:120px">
+
+              <select id="choose-fruit-multiple" onclick="doSomething()"> 
+                <option id="moisture_value"  selected>Select level...</option>
+                <option id="moisture_value" value="20">20%</option>
+                <option id="moisture_value" value="40">40%</option>
+                <option id="moisture_value"  value="60">60%</option>
+                <option id="moisture_value"  value="80">80%</option>
+            </select>
+              <!--
                   <select name="moisturealue" class="selectpicker form-control"aria-label="Example select with button addon">
                     <option id="moisture_value" selected>Select level...</option>
                     <option id="moisture_value" value="20"> 20%</option>
                     <option id="moisture_value" value="40"> 40%</option>
                     <option id="moisture_value" value="60"> 60%</option>
                     <option id="moisture_value" value="80"> 80%</option>
-                  </select>
+                  </select> -->
               </div>
             <div style = " background-color:#24ad4a; border: none; padding: 1px 1px; margin-left:15px;text-align: center; text-decoration: none; display: inline-block;font-size: 10px;">
-            <button type="submit" class="btn btn-default"  value ="{{url_for('dashboard')}}">Go</button>
+            <button type="submit" id="btn1" class="btn btn-default"  value ="{{url_for('dashboard') }}" disable>Go</button>
           </div>
         </div>
-        
       </form>
   
       <div>    
@@ -182,6 +190,21 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
 </div>
+<script>
+  function doSomething(){
+    var btn = document.querySelector('#btn1').disable=true;
+    var selected_options = document.querySelector('#choose-fruit-multiple').selectedOptions;
+    if(selected_options[0].text=="Select level..."){
+      return -1;
+    }
+    else{
+      btn.disable=false;
+    for(var i=0; i<selected_options.length; i++) {
+      console.log(selected_options[i].value);
+    }
+  }
+  }
+</script>
 
 </body>
 </html>
