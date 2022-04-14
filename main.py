@@ -1,9 +1,10 @@
-from tkinter.messagebox import NO
 from flask import Flask, jsonify, render_template, request, redirect, url_for, session
 import re
 from pymongo import MongoClient
 import datetime,json
 from db import insertNewRecord
+msValue = -1
+
 app = Flask(__name__)
 import bcrypt
 
@@ -16,18 +17,19 @@ db =  mongo['test']
 collName = db['users']
 
 
+
 @app.route('/login/dashboard/')
 def dashboard():
     return render_template('overview.html')
 
-@app.route('/login/dashboard/moisturelevelupdate/')
-def moisturelevelupdate():
-    # sms = ''
-    # if request.method == 'POST' and not 'comp_select' in request.form:
-    #     comp_select = request.form['comp_select']
-    #     if not comp_select :
-    #         sms = 'Please select range of moisture level!'
-    return render_template('overview.html')
+# @app.route('/login/dashboard/moisturelevelupdate/')
+# def moisturelevelupdate():
+#     # sms = ''
+#     # if request.method == 'POST' and not 'comp_select' in request.form:
+#     #     comp_select = request.form['comp_select']
+#     #     if not comp_select :
+#     #         sms = 'Please select range of moisture level!'
+#     return render_template('overview.html')
     
 
 @app.route('/')
@@ -144,10 +146,35 @@ def profile():
 
 
 ##API 
-# @app.route("/user" ,methods = ['GET'])
+# @app.route("/user",methods = ['GET'])
 # def user_get():
 #     return ("http://127.0.0.1:2000/user")
 
+@app.route("/moisturevalue",methods = ['POST'])
+def setmoisture_get():
+    if msValue > 1 :
+        return msValue
+    return -1
+    
+
+
+
+@app.route("/setMoisture",methods = ['POST'])
+def setMoisture():
+    msValue = request.form['moisturealue']  
+    print(msValue,type(msValue))
+    if msValue > 1:
+        return msValue
+    return -1
+        # try:
+        #     # moistureLevel = msValue
+        #     return msValue    
+        # except Exception as e:
+        #     # return {'status_code':300 , 'message':f'Generic error:{str(e)}'}
+        #     return -1
+    
+    
+    # return ("http://127.0.0.1:2000/setsoilMoisture")
 
 # @app.route("/test" , methods=['GET', 'POST'])
 # def test():
@@ -159,17 +186,10 @@ def profile():
 @app.route("/user" , methods = ['POST'])
 def user_post():
     data = request.json
-    select = request.form.get('comp_select')
-    select = int(select)
-    print(select,type(select))
     try:
         temperature = data['temperature']
         humidity = data['humidity']
         light = data['light']
-        # if (select is not None):
-        #     moistureLevel = select  
-        #     print(moistureLevel)  
-        # else:
         moistureLevel = data['moistureLevel']
                      
         obj = {
