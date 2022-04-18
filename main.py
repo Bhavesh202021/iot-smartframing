@@ -3,7 +3,8 @@ import re
 from pymongo import MongoClient
 import datetime,json
 from db import insertNewRecord
-msValue = -1
+from db import insertsoilRecord
+#msValue = -1
 
 app = Flask(__name__)
 import bcrypt
@@ -15,6 +16,7 @@ app.config['MONGO_URI'] = 'mongodb+srv://bhavesh:bhau2021@cluster0.1mj5o.mongodb
 mongo = MongoClient(app.config.get('MONGO_URI'))
 db =  mongo['test'] 
 collName = db['users']
+
 
 
 
@@ -138,9 +140,40 @@ def profile():
 
 
 ##API 
-# @app.route("/user",methods = ['GET'])
-# def user_get():
-#     return ("http://127.0.0.1:2000/user")
+@app.route("/user",methods = ['GET'])
+def user_get():
+    return ("http://127.0.0.1:2000/user")
+
+
+# @app.route('/setSoilmoisture', methods=['GET', 'POST'])
+# def setSoilmoisture():
+#     return ("http://127.0.0.1:2000/setSoilmoisture")
+
+
+@app.route("/setSoilmoisture" , methods=['GET', 'POST'])
+def test():
+    select1 = request.form.get('choose-soil-multiple')
+    print(str(select1))  
+    soilmoisture = select1
+    try:
+        # obj = {
+        #     'moistureLevel': soilmoisture
+        # }         
+        # # obj = {
+        # #     'moistureLevel': moistureLevel
+        # #     }
+        #     #post = open(f'./data/bhavesh.json','w')
+        # print(obj)
+            #post.write(json.dumps(obj))
+            #post.close()
+        r = insertsoilRecord(soilmoisture)
+        
+        return {'status_code':200,'message':'Post created successful'}
+            
+    except Exception as e:
+        return {'status_code':300 , 'message':f'Generic error:{str(e)}'}
+
+
 
 # @app.route("/moisturevalue",methods = ['POST'])
 # def setmoisture_get():
@@ -151,12 +184,12 @@ def profile():
 
 
 
-@app.route("/setMoisture",methods = ['POST'])
-def setMoisture():
-    msValue = request.form['moisturealue']  
-    print(msValue,type(msValue))
-    if msValue > 1:
-        return msValue
+# @app.route("/setMoisture",methods = ['POST'])
+# def setMoisture():
+#     msValue = request.form['moisturealue']  
+#     print(msValue,type(msValue))
+#     if msValue > 1:
+#         return msValue
     return -1
         # try:
         #     # moistureLevel = msValue
@@ -168,38 +201,40 @@ def setMoisture():
     
     # return ("http://127.0.0.1:2000/setsoilMoisture")
 
-# @app.route("/test" , methods=['GET', 'POST'])
-# def test():
-#     select = request.form.get('comp_select')
-#     print(str(select))
-#     return(str(select)) # just to see what select is
+
 
 
 @app.route("/user" , methods = ['POST'])
 def user_post():
-    data = request.json
+    select = request.form.get('choose-soil-multiple')
+    select = request.json
+    print(str(select))
+    data = request.json      
     try:
         temperature = data['temperature']
         humidity = data['humidity']
         light = data['light']
         moistureLevel = data['moistureLevel']
-                     
+        
+            
+            
+                        
         obj = {
             'temperature': temperature,
             'humidity':humidity,
             'light':light,
             'moistureLevel':moistureLevel
-        }
-        #post = open(f'./data/bhavesh.json','w')
+            }
+            #post = open(f'./data/bhavesh.json','w')
         print(obj)
-        #post.write(json.dumps(obj))
-        #post.close()
+            #post.write(json.dumps(obj))
+            #post.close()
         l = insertNewRecord(obj)
         return {'status_code':200,'message':'Post created successful'}
-        
+            
     except Exception as e:
         return {'status_code':300 , 'message':f'Generic error:{str(e)}'}
-    
+        
 if __name__ == "__main__":
     app.run(debug = True,port=2000)
 
