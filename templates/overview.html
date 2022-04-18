@@ -125,12 +125,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </select>
       -->
 
-      <form class="form-inline" method="POST" action="{{ url_for('dashboard') }}"> 
+      <form class="form-inline" method="POST" action="{{ url_for('setSoilmoisture') }}"> 
         <div class="form-group">
           <div class="input-group">
             <div style = "width:120px">
 
-              <select id="choose-fruit-multiple" onclick="doSomething()"> 
+              <select id="choose-soil-multiple" name = "choose-soil-multiple" onclick="doSomething()"required> 
                 <option id="moisture_value"  selected>Select level...</option>
                 <option id="moisture_value" value="20">20%</option>
                 <option id="moisture_value" value="40">40%</option>
@@ -147,8 +147,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                   </select> -->
               </div>
             <div style = " background-color:#24ad4a; border: none; padding: 1px 1px; margin-left:15px;text-align: center; text-decoration: none; display: inline-block;font-size: 10px;">
-            <button type="submit" id="btn1" class="btn btn-default"  value ="{{url_for('dashboard') }}" disable>Go</button>
-          </div>
+            <button type="submit" id="btn1" value="Submit" class="btn btn-default"  value ="{{url_for('dashboard') }}" disable>Go</button>
+          </div> 
         </div>
       </form>
   
@@ -193,7 +193,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <script>
   function doSomething(){
     var btn = document.querySelector('#btn1').disable=true;
-    var selected_options = document.querySelector('#choose-fruit-multiple').selectedOptions;
+    var selected_options = document.querySelector('#choose-soil-multiple').selectedOptions;
     if(selected_options[0].text=="Select level..."){
       return -1;
     }
